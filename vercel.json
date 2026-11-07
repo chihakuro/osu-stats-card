@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/card.js": { "includeFiles": "fonts/**", "memory": 1024, "maxDuration": 20 }
+  },
+  "rewrites": [
+    { "source": "/card/:u", "destination": "/api/card?u=:u" }
+  ]
+}
