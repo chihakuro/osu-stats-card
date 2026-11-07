@@ -51,13 +51,6 @@ Only things the osu! profile page doesn't show:
    Click **Deploy**.
 3. Open `https://<app>.vercel.app`, enter a username → **Generate** → **Copy**, then paste it into the me! section of the osu! profile.
 
-## Font
-
-osu! uses **Torus** (Paulo Goode), which is a commercial font. Its licence file in ppy/osu-resources says it needs a licence to be distributed, so it is not included here.
-
-- By default the card uses **Kumbh Sans**, the closest free look-alike. Nunito is the fallback for Vietnamese characters.
-- If you own a licensed copy of Torus (`.otf` / `.ttf`), drop it into `fonts/torus/` and the card switches to it automatically. Don't commit it to a public repository.
-
 ## Notes
 
 - The image cannot know which profile it is embedded on (osu! loads images through its own proxy), so the username is part of the image URL. Each player uses a link with their own name.
