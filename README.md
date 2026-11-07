@@ -2,18 +2,28 @@
 
 ![preview](docs-preview.png)
 
-A live PNG card in the osu!lazer style that shows the stats an osu! profile **does not** display, for **any** player.
-Paste one BBCode block into a me! page and the card keeps itself up to date (cached for 15 minutes).
+A live card in the osu!lazer style that shows the stats an osu! profile **does not** display. It works for any player and updates itself (refreshed about every 15 minutes).
+
+**App: https://osu-stats-card-nu.vercel.app**
+
+## Make your card
+
+1. Open **https://osu-stats-card-nu.vercel.app**.
+2. Type your osu! username (or user ID) and pick a mode: osu!, taiko, catch or mania.
+3. Click **Generate**, check the preview, then click **Copy**.
+4. On your osu! profile, edit the **me!** section, paste the BBCode and save.
+
+Done. The card shows your latest stats every time someone opens your profile, and its main sections are clickable (profile, ranking, top plays, beatmaps).
+
+Prefer to write it by hand? The image link is:
 
 ```
-https://<app>.vercel.app/card/<username>.png             # osu! standard
-https://<app>.vercel.app/card/<username>.png?mode=mania  # taiko | fruits | mania
-https://<app>.vercel.app/card/<username>.png?scale=2     # 2x resolution
-https://<app>.vercel.app/card/demo.png                   # sample data, no API needed
-https://<app>.vercel.app/api/bbcode?u=<username>         # ready-to-paste BBCode with clickable imagemap
+[img]https://osu-stats-card-nu.vercel.app/card/YOUR_USERNAME.png[/img]
 ```
 
-The home page (`https://<app>.vercel.app`) has a small generator: type a username, pick a mode, copy the BBCode.
+Add `?mode=taiko`, `?mode=fruits` or `?mode=mania` for other modes, and `?scale=2` for a sharper image.
+
+> Editing the me! section requires your account to have (or have had) osu!supporter.
 
 ## What's on the card
 
@@ -38,22 +48,3 @@ Only things the osu! profile page doesn't show:
   - total plays and favourites on your own maps, plays per set, favourites per 1k plays
   - number of difficulties, average and max star rating, ranked + loved rate
   - first submitted map, most played and most favourited map
-
-## Deploy (about 5 minutes, free)
-
-1. **Create an osu! OAuth app:** go to https://osu.ppy.sh/home/account/edit → **OAuth** → *New OAuth Application*.
-   Any name, leave the callback URL empty. Keep the **Client ID** and **Client Secret**.
-2. **Vercel:** https://vercel.com → *Add New → Project* → import this repository.
-   Under *Environment Variables* add:
-   - `OSU_CLIENT_ID` = your Client ID
-   - `OSU_CLIENT_SECRET` = your Client Secret
-
-   Click **Deploy**.
-3. Open `https://<app>.vercel.app`, enter a username → **Generate** → **Copy**, then paste it into the me! section of the osu! profile.
-
-## Notes
-
-- The image cannot know which profile it is embedded on (osu! loads images through its own proxy), so the username is part of the image URL. Each player uses a link with their own name.
-- Editing a me! page requires the account to have (or have had) osu!supporter.
-- Local preview: `npm install && npm run preview`, which writes `preview.png` from sample data.
-- Layout and colours live in `lib/render.js`; data fetching and the derived stats are in `lib/osu.js`.
